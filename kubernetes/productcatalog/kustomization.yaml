@@ -1,0 +1,15 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - deploy.yaml
+  - svc.yaml
+
+commonLabels:
+  app.kubernetes.io/name: product-catalog-service
+  app.kubernetes.io/version: "1.12.0"
+  
+images:
+  - name: otel/demo
+    newName: frank0956/product-catalog-service
+    newTag: latest
